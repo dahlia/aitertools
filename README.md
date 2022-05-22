@@ -3,6 +3,7 @@
 aiterable
 =========
 
+[![Latest version][Tag badge]][Deno module]
 [![LGPL 3.0][License badge]](./LICENSE)
 [![GitHub Actions][GitHub Actions status badge]][GitHub Actions]
 [![Codecov][Codecov badge]][Codecov]
@@ -21,6 +22,8 @@ Currently it provides:
 
 It is going to have more functions later.
 
+[Tag badge]: https://img.shields.io/github/v/tag/dahlia/aitertools
+[Deno module]: https://deno.land/x/aitertools
 [License badge]: https://img.shields.io/github/license/dahlia/aitertools
 [GitHub Actions]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml
 [GitHub Actions status badge]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml/badge.svg
