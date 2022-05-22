@@ -3,8 +3,12 @@
 aiterable
 =========
 
+[![LGPL 3.0][License badge]](./LICENSE)
+[![GitHub Actions][GitHub Actions status badge]][GitHub Actions]
+[![Codecov][Codecov badge]][Codecov]
+
 This library provides a collection of small utility functions dealing
-with async iterables.  You can think of it as LINQ or aitertools for Deno.
+with async iterables.  You can think of it as LINQ or aitertools for [Deno].
 
 Currently it provides:
 
@@ -16,3 +20,10 @@ Currently it provides:
  -  `toArray()`
 
 It is going to have more functions later.
+
+[License badge]: https://img.shields.io/github/license/dahlia/aitertools
+[GitHub Actions]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml
+[GitHub Actions status badge]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml/badge.svg
+[Codecov badge]: https://codecov.io/gh/dahlia/aitertools/branch/main/graph/badge.svg?token=UBDX4Inrz6
+[Codecov]: https://codecov.io/gh/dahlia/aitertools
+[Deno]: https://deno.land/
