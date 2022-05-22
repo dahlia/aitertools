@@ -4,7 +4,7 @@ import {
 } from "https://deno.land/std@0.140.0/testing/asserts.ts";
 import { assertStreams, assertStreamStartsWith } from "./testing.ts";
 
-async function* getAsyncIterable<T>(
+export async function* getAsyncIterable<T>(
   ...args: T[]
 ): AsyncIterableIterator<T> {
   for (const arg of args) {
