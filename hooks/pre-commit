@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+deno test \
+  --doc \
+  --jobs \
+  --fail-fast
+deno lint
+deno fmt --check --ignore=.vscode/
