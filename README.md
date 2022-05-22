@@ -12,6 +12,7 @@ Currently it provides:
  -  `assertStreamStartsWith()`
  -  `count()`
  -  `take()`
+ -  `takeWhile()`
  -  `toArray()`
 
 It is going to have more functions later.
