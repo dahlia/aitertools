@@ -1,5 +1,6 @@
-import { count, cycle } from "./infinite.ts";
-import { assertStreamStartsWith } from "./testing.ts";
+import { assertThrows } from "https://deno.land/std@0.140.0/testing/asserts.ts";
+import { count, cycle, repeat } from "./infinite.ts";
+import { assertStreams, assertStreamStartsWith } from "./testing.ts";
 
 Deno.test("count()", async () => {
   await assertStreamStartsWith(count(0), [0, 1, 2, 3, 4, 5]);
@@ -25,4 +26,14 @@ Deno.test("cycle()", async () => {
     cycle(gen()),
     [3, 6, 9, 3, 6, 9, 3, 6, 9, 3, 6, 9, 3, 6, 9, 3, 6, 9, 3, 6, 9, 3, 6, 9, 3],
   );
+});
+
+Deno.test("repeat()", async () => {
+  await assertStreamStartsWith(repeat("v"), ["v", "v", "v", "v", "v", "v"]);
+  await assertStreams(repeat("V", 3), ["V", "V", "V"]);
+  await assertStreams(repeat("V", 5), ["V", "V", "V", "V", "V"]);
+  await assertStreams(repeat("V", 0), []);
+  assertThrows(() => repeat("V", 2.5), RangeError);
+  assertThrows(() => repeat("V", -1), RangeError);
+  assertThrows(() => repeat("V", -Infinity), RangeError);
 });

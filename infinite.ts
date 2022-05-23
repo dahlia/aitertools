@@ -132,3 +132,69 @@ export async function* cycle<T>(
     }
   }
 }
+
+/**
+ * Makes an async iterator that yields the same value over and over again.
+ * It will repeat indefinitely unless `times` is specified.
+ *
+ * ``` typescript
+ * import { repeat } from "./infinite.ts";
+ *
+ * const iterable = repeat("v");
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print the following and keep going forever:
+ *
+ * ~~~
+ * v
+ * v
+ * v
+ * (...)
+ * ~~~
+ *
+ * However, if you specify the second parameter `times` it will repeat that many
+ * times:
+ *
+ * ``` typescript
+ * import { repeat } from "./infinite.ts";
+ *
+ * const iterable = repeat("V", 3);
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print the following 3 lines:
+ *
+ * ~~~
+ * V
+ * V
+ * V
+ * ~~~
+ *
+ * @param value The value to repeat.
+ * @param times The number of times to repeat.  Defaults to `Infinity`.
+ * @returns An async iterable that repeats the `value` indefinitely or
+ *          `times` times.
+ * @throws {RangeError} when `times` is not a non-negative integer.
+ */
+export function repeat<T>(
+  value: T,
+  times = Infinity,
+): AsyncIterableIterator<T> {
+  if (times === Infinity) return repeatIndefinitely(value);
+  if (!Number.isInteger(times) || times < 0) {
+    throw new RangeError("times must be a non-negative integer");
+  }
+  return repeatDefinitely(value, times);
+}
+
+async function* repeatDefinitely<T>(
+  value: T,
+  times: number,
+): AsyncIterableIterator<T> {
+  for (let i = 0; i < times; i++) yield value;
+}
+
+async function* repeatIndefinitely<T>(value: T): AsyncIterableIterator<T> {
+  while (true) yield value;
+}
