@@ -1,7 +1,44 @@
 /**
  * Takes a specified number of elements from the beginning of an async iterable.
+ *
+ * ``` typescript
+ * import { take } from "./take.ts";
+ * import { count } from "./infinite.ts";
+ *
+ * const iterable = take(count(0, 5), 3);
+ * for await (const value of iterable) {
+ *   console.log(value);
+ * }
+ * ```
+ *
+ * The above example will print the following 3 lines:
+ *
+ * ~~~
+ * 0
+ * 5
+ * 10
+ * ~~~
+ *
  * If the iterable is shorter than the specified number, the whole elements are
  * taken.
+ *
+ * ``` typescript
+ * import { take } from "./take.ts";
+ *
+ * async function* gen() { yield "foo"; yield "bar"; yield "baz"; }
+ * const iterable = take(gen(), 5);
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print only 3 elements, because `gen()` yields only 3
+ * elements:
+ *
+ * ~~~
+ * foo
+ * bar
+ * baz
+ * ~~~
+ *
  * @param source The async iterable to take elements from.  It can be either
  *               finite or infinite.
  * @param count The number of elements to take.
@@ -22,6 +59,54 @@ export async function* take<T>(
 /**
  * Takes elements from the beginning of an async iterable as long as a specified
  * condition is met.  If the condition is not met, the iterable stops.
+ *
+ * ``` typescript
+ * import { takeWhile } from "./take.ts";
+ * import { count } from "./infinite.ts";
+ *
+ * const iterable = takeWhile(count(0), v => v < 4);
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print the following 4 lines:
+ *
+ * ~~~
+ * 0
+ * 1
+ * 2
+ * 3
+ * ~~~
+ *
+ * An async predicate function also works.  The following example will print
+ * the same 4 lines as the previous example:
+ *
+ * ``` typescript
+ * import { takeWhile } from "./take.ts";
+ * import { count } from "./infinite.ts";
+ *
+ * const iterable = takeWhile(count(0), (v, i) => Promise.resolve(v < 4));
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * A predicate function can take an index as well as the value.
+ *
+ * ``` typescript
+ * import { takeWhile } from "./take.ts";
+ * import { count } from "./infinite.ts";
+ *
+ * const iterable = takeWhile(count(0, 10), (_, i) => i < 4);
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print the following 4 lines:
+ *
+ * ~~~
+ * 0
+ * 10
+ * 20
+ * 30
+ * ~~~
+ *
  * @param source The async iterable to take elements from.  It can be either
  *               finite or infinite.
  * @param predicate A predicate function to test each source element for
