@@ -1,7 +1,7 @@
 <!-- deno-fmt-ignore-file -->
 
-aiterable
-=========
+aitertools
+==========
 
 [![Latest version][Tag badge]][Deno module]
 [![LGPL 3.0][License badge]](./LICENSE)
