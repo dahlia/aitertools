@@ -12,4 +12,16 @@ Deno.test("takeWhile()", async () => {
   await assertStreams(takeWhile(count(0), (v) => v < 3), [0, 1, 2]);
   await assertStreams(takeWhile(count(0, 2), (v) => v < 5), [0, 2, 4]);
   await assertStreams(takeWhile(count(5, 2), (_, i) => i < 3), [5, 7, 9]);
+  await assertStreams(
+    takeWhile(count(0), (v) => Promise.resolve(v < 3)),
+    [0, 1, 2],
+  );
+  await assertStreams(
+    takeWhile(count(0, 2), (v) => Promise.resolve(v < 5)),
+    [0, 2, 4],
+  );
+  await assertStreams(
+    takeWhile(count(5, 2), (_, i) => Promise.resolve(i < 3)),
+    [5, 7, 9],
+  );
 });
