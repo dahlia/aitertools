@@ -17,6 +17,7 @@ Currently it provides (see also [Deno Doc]):
  -  `assertStreams()`
  -  `assertStreamStartsWith()`
  -  `count()`
+ -  `cycle()`
  -  `take()`
  -  `takeWhile()`
  -  `toArray()`

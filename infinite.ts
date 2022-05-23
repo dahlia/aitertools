@@ -84,3 +84,51 @@ export async function* count(
     yield i;
   }
 }
+
+/**
+ * Makes an async iterator that yields elements from the `source` and saving
+ * a copy of each.  When the `source` is exhausted, yields saved copies
+ * indefinitely.
+ *
+ * Note that it may require significant memory to save the copies
+ * depending on the length of the `source`.
+ *
+ * ``` typescript
+ * import { cycle } from "./infinite.ts";
+ *
+ * async function* gen() { yield 3; yield 6; yield 9; }
+ * const iterable = cycle(gen());
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print the following and keep going forever:
+ *
+ * ~~~
+ * 3
+ * 6
+ * 9
+ * 3
+ * 6
+ * 9
+ * (...)
+ * ~~~
+ *
+ * @param source An async iterable to repeat.
+ * @returns An async iterable that repeats the `source` indefinitely.
+ */
+export async function* cycle<T>(
+  source: Iterable<T> | AsyncIterable<T>,
+): AsyncIterableIterator<T> {
+  const cache = [];
+  for await (const value of source) {
+    yield value;
+    cache.push(value);
+  }
+  if (cache.length > 0) {
+    while (true) {
+      for await (const value of cache) {
+        yield value;
+      }
+    }
+  }
+}
