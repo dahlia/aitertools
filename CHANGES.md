@@ -6,7 +6,7 @@ Changelog
 Version 0.2.0
 -------------
 
-To be released.
+Released on May 24, 2022.
 
  -  Added *mod.ts* module which re-exports everything from other modules.
  -  Added `cycle()` function.
