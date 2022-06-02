@@ -76,12 +76,27 @@
  *             Defaults to 1.
  * @returns An async iterable of evenly spaced values.
  */
-export async function* count(
-  start = 0,
-  step = 1,
-): AsyncIterableIterator<number> {
-  for (let i = start; true; i += step) {
-    yield i;
+export function count(start = 0, step = 1): AsyncIterableIterator<number> {
+  return new Counter(start, step);
+}
+
+class Counter implements AsyncIterableIterator<number> {
+  #i: number;
+
+  constructor(readonly start: number, readonly step: number) {
+    this.#i = start;
+  }
+
+  [Symbol.asyncIterator]() {
+    return this;
+  }
+
+  next(): Promise<IteratorResult<number>> {
+    return new Promise((resolve, _) => {
+      const result = { done: false, value: this.#i };
+      this.#i += this.step;
+      resolve(result);
+    });
   }
 }
 
@@ -124,11 +139,9 @@ export async function* cycle<T>(
     yield value;
     cache.push(value);
   }
-  if (cache.length > 0) {
-    while (true) {
-      for await (const value of cache) {
-        yield value;
-      }
+  while (cache.length > 0) {
+    for await (const value of cache) {
+      yield value;
     }
   }
 }
@@ -181,7 +194,7 @@ export function repeat<T>(
   value: T,
   times = Infinity,
 ): AsyncIterableIterator<T> {
-  if (times === Infinity) return repeatIndefinitely(value);
+  if (times === Infinity) return new InfiniteRepeater(value);
   if (!Number.isInteger(times) || times < 0) {
     throw new RangeError("times must be a non-negative integer");
   }
@@ -195,6 +208,14 @@ async function* repeatDefinitely<T>(
   for (let i = 0; i < times; i++) yield value;
 }
 
-async function* repeatIndefinitely<T>(value: T): AsyncIterableIterator<T> {
-  while (true) yield value;
+class InfiniteRepeater<T> implements AsyncIterableIterator<T> {
+  constructor(readonly value: T) {}
+
+  [Symbol.asyncIterator]() {
+    return this;
+  }
+
+  next(): Promise<IteratorResult<T>> {
+    return Promise.resolve({ done: false, value: this.value });
+  }
 }
