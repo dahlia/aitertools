@@ -128,6 +128,8 @@ class Counter implements AsyncIterableIterator<number> {
  * (...)
  * ~~~
  *
+ * @template T The type of the elements in the `source` and the returned async
+ *             iterable.
  * @param source An async iterable to repeat.
  * @returns An async iterable that repeats the `source` indefinitely.
  */
@@ -184,6 +186,8 @@ export async function* cycle<T>(
  * V
  * ~~~
  *
+ * @template T The type of the `value` and the elements in the returned async
+ *             iterable.
  * @param value The value to repeat.
  * @param times The number of times to repeat.  Defaults to `Infinity`.
  * @returns An async iterable that repeats the `value` indefinitely or

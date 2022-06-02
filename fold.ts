@@ -46,6 +46,8 @@
  * reduced value: 1
  * ~~~
  *
+ * @template E The type of the elements in the `source`.
+ * @template V The type of the `initialValue` and the reduced values.
  * @param reducer A binary operation that accepts the previous reduction result
  *                and the next element in the async iterable, and returns
  *                the next reduction result.
@@ -110,6 +112,8 @@ export function reduce<E, V>(
  *     at async ...
  * ~~~
  *
+ * @template E The type of the elements in the `source`.
+ * @template V The type of the reduced values.
  * @param reducer A binary operation that accepts the previous reduction result
  *                and the next element in the async iterable, and returns
  *                the next reduction result.

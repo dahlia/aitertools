@@ -39,6 +39,8 @@
  * baz
  * ~~~
  *
+ * @template T The type of the elements in the `source` and the returned async
+ *             iterable.
  * @param source The async iterable to take elements from.  It can be either
  *               finite or infinite.
  * @param count The number of elements to take.
@@ -107,6 +109,8 @@ export async function* take<T>(
  * 30
  * ~~~
  *
+ * @template T The type of the elements in the `source` and the returned async
+ *             iterable.
  * @param source The async iterable to take elements from.  It can be either
  *               finite or infinite.
  * @param predicate A predicate function to test each source element for

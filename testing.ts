@@ -15,6 +15,8 @@ import { assertEquals } from "https://deno.land/std@0.140.0/testing/asserts.ts";
  * });
  * ```
  *
+ * @template T The type of the elements in the `actual` async iterable and the
+ *             `expected` array.
  * @param actual The async iterable to compare.  It must be finite.
  * @param expected The array that contains the expected elements.
  */
@@ -41,6 +43,8 @@ export async function assertStreams<T>(
  * });
  * ```
  *
+ * @template T The type of the elements in the `actual` async iterable and the
+ *             `expected` array.
  * @param actual The async iterable to compare.  It can be either finite or
  *               infinite.
  * @param expected The array that contains the expected beginning elements.

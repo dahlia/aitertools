@@ -17,6 +17,8 @@
  * 3
  * ~~~
  *
+ * @template T The type of the elements in the `source` and the returned async
+ *             iterable.
  * @param source The synchronous iterable to take elements from.
  *               It can be either finite or infinite.
  * @returns An async iterable that yields the same elements as the `source`
@@ -50,6 +52,7 @@ export async function* fromIterable<T>(
  * await toArray(count(0));
  * ```
  *
+ * @template T The type of the elements in the `source` and the returned array.
  * @param source An async iterable to create an array from.  It must be finite.
  * @returns An array that contains the elements from the `source` iterable.
  */
