@@ -9,6 +9,7 @@ Version 0.3.0
 To be released.
 
  -  Added *fold.ts* module.
+ -  Added `fromIterable()` function.
  -  Added `reduce()` function.
 
 
