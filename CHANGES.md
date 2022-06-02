@@ -8,6 +8,9 @@ Version 0.3.0
 
 To be released.
 
+ -  Added *fold.ts* module.
+ -  Added `reduce()` function.
+
 
 Version 0.2.0
 -------------
