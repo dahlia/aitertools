@@ -14,8 +14,8 @@ export async function* take<T>(
 ): AsyncIterableIterator<T> {
   let i = 0;
   for await (const value of source) {
+    if (i++ >= count) break;
     yield value;
-    if (++i >= count) break;
   }
 }
 
