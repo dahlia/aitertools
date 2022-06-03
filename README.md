@@ -12,20 +12,24 @@ aitertools
 This library provides a collection of small utility functions dealing
 with async iterables.  You can think of it as LINQ or aitertools for [Deno].
 
-Currently it provides (see also [Deno Doc]):
+Currently it provides:
 
- -  `assertStreams()`
- -  `assertStreamStartsWith()`
- -  `count()`
- -  `cycle()`
- -  `fromIterable()`
- -  `reduce()`
- -  `repeat()`
- -  `take()`
- -  `takeWhile()`
- -  `toArray()`
+| Module[^1]         | Function                     |
+|--------------------|------------------------------|
+| *[collections.ts]* | [`fromIterable()`]           |
+| *[collections.ts]* | [`toArray()`]                |
+| *[fold.ts]*        | [`reduce()`]                 |
+| *[infinite.ts]*    | [`count()`]                  |
+| *[infinite.ts]*    | [`cycle()`]                  |
+| *[infinite.ts]*    | [`repeat()`]                 |
+| *[take.ts]*        | [`take()`]                   |
+| *[take.ts]*        | [`takeWhile()`]              |
+| *[testing.ts]*     | [`assertStreams()`]          |
+| *[testing.ts]*     | [`assertStreamStartsWith()`] |
 
 It is going to have more functions later.
+
+[^1]: All functions are re-exported by [*mod.ts*][Deno Doc] as well.
 
 [Tag badge]: https://img.shields.io/github/v/tag/dahlia/aitertools
 [Deno module]: https://deno.land/x/aitertools
@@ -37,3 +41,18 @@ It is going to have more functions later.
 [Codecov badge]: https://codecov.io/gh/dahlia/aitertools/branch/main/graph/badge.svg?token=UBDX4Inrz6
 [Codecov]: https://codecov.io/gh/dahlia/aitertools
 [Deno]: https://deno.land/
+[collections.ts]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts
+[fold.ts]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts
+[infinite.ts]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts
+[take.ts]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts
+[testing.ts]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts
+[`fromIterable()`]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts/~/fromIterable
+[`toArray()`]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts/~/toArray
+[`reduce()`]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts/~/reduce
+[`count()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/count
+[`cycle()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/cycle
+[`repeat()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/repeat
+[`take()`]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts/~/take
+[`takeWhile()`]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts/~/takeWhile
+[`assertStreams()`]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts/~/assertStreams
+[`assertStreamStartsWith()`]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts/~/assertStreamStartsWith
