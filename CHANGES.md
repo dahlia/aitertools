@@ -13,6 +13,15 @@ Released on May 24, 2022.
  -  Added `repeat()` function.
 
 
+Version 0.1.1
+-------------
+
+Released on June 4, 2022.
+
+ -  Fixed an off-by-one bug that `take()` had returned a non-empty async
+    iterator when `count <= 0`.
+
+
 Version 0.1.0
 -------------
 
