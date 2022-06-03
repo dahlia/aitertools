@@ -8,6 +8,9 @@ Version 0.3.0
 
 To be released.
 
+ -  Added *drop.ts* module.
+ -  Added `drop()` function.
+ -  Added `dropWhile()` function.
  -  Added *fold.ts* module.
  -  Added `fromIterable()` function.
  -  Added `reduce()` function.

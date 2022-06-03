@@ -36,6 +36,8 @@ Functions
 |--------------------|------------------------------|
 | *[collections.ts]* | [`fromIterable()`]           |
 | *[collections.ts]* | [`toArray()`]                |
+| *[drop.ts]*        | [`drop()`]                   |
+| *[drop.ts]*        | [`dropWhile()`]              |
 | *[fold.ts]*        | [`reduce()`]                 |
 | *[infinite.ts]*    | [`count()`]                  |
 | *[infinite.ts]*    | [`cycle()`]                  |
@@ -50,12 +52,15 @@ It is going to have more functions later.
 [^1]: All functions are re-exported by [*mod.ts*][Deno Doc] as well.
 
 [collections.ts]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts
+[drop.ts]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts
 [fold.ts]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts
 [infinite.ts]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts
 [take.ts]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts
 [testing.ts]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts
 [`fromIterable()`]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts/~/fromIterable
 [`toArray()`]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts/~/toArray
+[`drop()`]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts/~/drop
+[`dropWhile()`]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts/~/dropWhile
 [`reduce()`]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts/~/reduce
 [`count()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/count
 [`cycle()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/cycle

@@ -79,18 +79,18 @@ export async function* take<T>(
  * 3
  * ~~~
  *
- * An async predicate function also works.  The following example will print
+ * An async `predicate` function also works.  The following example will print
  * the same 4 lines as the previous example:
  *
  * ``` typescript
  * import { takeWhile } from "./take.ts";
  * import { count } from "./infinite.ts";
  *
- * const iterable = takeWhile(count(0), (v, i) => Promise.resolve(v < 4));
+ * const iterable = takeWhile(count(0), v => Promise.resolve(v < 4));
  * for await (const value of iterable) console.log(value);
  * ```
  *
- * A predicate function can take an index as well as the value.
+ * A `predicate` function can take an index as well as the value.
  *
  * ``` typescript
  * import { takeWhile } from "./take.ts";
