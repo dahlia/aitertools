@@ -9,10 +9,28 @@ aitertools
 [![GitHub Actions][GitHub Actions status badge]][GitHub Actions]
 [![Codecov][Codecov badge]][Codecov]
 
-This library provides a collection of small utility functions dealing
-with async iterables.  You can think of it as LINQ or aitertools for [Deno].
+This library provides a [well-tested][Codecov] collection of small utility
+functions dealing with [async iterables].  You can think of it as LINQ or aitertools for [Deno].
 
-Currently it provides:
+~~~ typescript
+import * as aitertools from "https://deno.land/x/aitertools/mod.ts";
+~~~
+
+[Tag badge]: https://img.shields.io/github/v/tag/dahlia/aitertools
+[Deno module]: https://deno.land/x/aitertools
+[License badge]: https://img.shields.io/github/license/dahlia/aitertools
+[Deno Doc]: https://doc.deno.land/https://deno.land/x/aitertools/mod.ts
+[Deno Doc badge]: https://img.shields.io/badge/api-deno%20doc-blue
+[GitHub Actions]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml
+[GitHub Actions status badge]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml/badge.svg
+[Codecov badge]: https://codecov.io/gh/dahlia/aitertools/branch/main/graph/badge.svg?token=UBDX4Inrz6
+[Codecov]: https://codecov.io/gh/dahlia/aitertools
+[async iterables]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+[Deno]: https://deno.land/
+
+
+Functions
+---------
 
 | Module[^1]         | Function                     |
 |--------------------|------------------------------|
@@ -31,16 +49,6 @@ It is going to have more functions later.
 
 [^1]: All functions are re-exported by [*mod.ts*][Deno Doc] as well.
 
-[Tag badge]: https://img.shields.io/github/v/tag/dahlia/aitertools
-[Deno module]: https://deno.land/x/aitertools
-[License badge]: https://img.shields.io/github/license/dahlia/aitertools
-[Deno Doc]: https://doc.deno.land/https://deno.land/x/aitertools/mod.ts
-[Deno Doc badge]: https://img.shields.io/badge/api-deno%20doc-blue
-[GitHub Actions]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml
-[GitHub Actions status badge]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml/badge.svg
-[Codecov badge]: https://codecov.io/gh/dahlia/aitertools/branch/main/graph/badge.svg?token=UBDX4Inrz6
-[Codecov]: https://codecov.io/gh/dahlia/aitertools
-[Deno]: https://deno.land/
 [collections.ts]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts
 [fold.ts]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts
 [infinite.ts]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts
