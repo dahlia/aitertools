@@ -2,6 +2,8 @@ import {
   AssertionError,
   assertRejects,
 } from "https://deno.land/std@0.140.0/testing/asserts.ts";
+import * as fc from "https://cdn.skypack.dev/fast-check@3.0.0?dts";
+import { fromIterable } from "./collections.ts";
 import { assertStreams, assertStreamStartsWith } from "./testing.ts";
 
 export async function* getAsyncIterable<T>(
@@ -10,6 +12,12 @@ export async function* getAsyncIterable<T>(
   for (const arg of args) {
     yield arg;
   }
+}
+
+export function asyncIterableArb<T>(
+  arbitraryElement: fc.Arbitrary<T>,
+): fc.Arbitrary<AsyncIterableIterator<T>> {
+  return fc.array(arbitraryElement).map(fromIterable);
 }
 
 async function* getInfiniteIterable(): AsyncIterableIterator<number> {
