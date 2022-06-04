@@ -19,13 +19,13 @@
  *
  * @template T The type of the elements in the `source` and the returned async
  *             iterable.
- * @param source The synchronous iterable to take elements from.
+ * @param source The synchronous or asynchronous iterable to take elements from.
  *               It can be either finite or infinite.
  * @returns An async iterable that yields the same elements as the `source`
  *          iterable.
  */
 export async function* fromIterable<T>(
-  source: Iterable<T>,
+  source: AsyncIterable<T> | Iterable<T>,
 ): AsyncIterableIterator<T> {
   yield* source;
 }

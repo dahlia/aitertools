@@ -32,6 +32,7 @@ Deno.test("fromIterable() [fc]", async () => {
       fc.asyncProperty(
         fc.array(arb),
         async (array) => {
+          await assertStreams(getAsyncIterable.apply(globalThis, array), array);
           await assertStreams(fromIterable(array), array);
           const iterable = toIterable.apply(globalThis, array);
           await assertStreams(fromIterable(iterable), array);
