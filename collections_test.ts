@@ -2,7 +2,7 @@ import { assertEquals } from "https://deno.land/std@0.140.0/testing/asserts.ts";
 import * as fc from "https://cdn.skypack.dev/fast-check@3.0.0?dts";
 import { fromIterable, toArray } from "./collections.ts";
 import { assertStreams } from "./testing.ts";
-import { getAsyncIterable } from "./testing_testing.ts";
+import { getAsyncIterable } from "./testing_test.ts";
 
 function* toIterable<T>(...values: T[]): Iterable<T> {
   yield* values;

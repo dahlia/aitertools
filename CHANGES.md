@@ -16,6 +16,8 @@ To be released.
  -  Added *fold.ts* module.
  -  Added `fromIterable()` function.
  -  Added `reduce()` function.
+ -  Added optional parameter `msg` to `assertStreams<T>()` function.
+ -  Added optional parameter `msg` to `assertStreamStartsWith<T>()` function.
 
 
 Version 0.2.1

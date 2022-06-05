@@ -19,14 +19,16 @@ import { assertEquals } from "https://deno.land/std@0.140.0/testing/asserts.ts";
  *             `expected` array.
  * @param actual The async iterable to compare.  It must be finite.
  * @param expected The array that contains the expected elements.
+ * @param msg Optional string message to display if the assertion fails.
  */
 export async function assertStreams<T>(
   actual: AsyncIterable<T>,
   expected: T[],
+  msg?: string,
 ): Promise<void> {
   const elements: T[] = [];
   for await (const value of actual) elements.push(value);
-  assertEquals(elements, expected);
+  assertEquals(elements, expected, msg);
 }
 
 /**
@@ -48,15 +50,17 @@ export async function assertStreams<T>(
  * @param actual The async iterable to compare.  It can be either finite or
  *               infinite.
  * @param expected The array that contains the expected beginning elements.
+ * @param msg Optional string message to display if the assertion fails.
  */
 export async function assertStreamStartsWith<T>(
   actual: AsyncIterable<T>,
   expected: T[],
+  msg?: string,
 ): Promise<void> {
   const elements: T[] = [];
   for await (const value of actual) {
     elements.push(value);
     if (elements.length >= expected.length) break;
   }
-  assertEquals(elements.slice(0, expected.length), expected);
+  assertEquals(elements.slice(0, expected.length), expected, msg);
 }

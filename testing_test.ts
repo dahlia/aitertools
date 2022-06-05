@@ -32,6 +32,12 @@ Deno.test("assertStreams()", async () => {
     () => assertStreams(getAsyncIterable(1, 9, 8, 7), [1, 9, 8, 4]),
     AssertionError,
   );
+  await assertRejects(
+    () => assertStreams(getAsyncIterable(), [1], "custom msg"),
+    AssertionError,
+    undefined,
+    "custom msg",
+  );
 });
 
 Deno.test("assertStreamStartsWith()", async () => {
@@ -93,5 +99,11 @@ Deno.test("assertStreamStartsWith()", async () => {
   await assertRejects(
     () => assertStreamStartsWith(getInfiniteIterable(), [0, 1, 2, 9]),
     AssertionError,
+  );
+  await assertRejects(
+    () => assertStreamStartsWith(getAsyncIterable(), [1], "custom msg"),
+    AssertionError,
+    undefined,
+    "custom msg",
   );
 });
