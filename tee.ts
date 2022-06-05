@@ -81,7 +81,7 @@ export function tee<T>(
  * iterated once.
  *
  * ``` typescript
- * import { tee } from "./combinators.ts";
+ * import { tee } from "./tee.ts";
  *
  * async function* source() {
  *   console.log("Yielding 1...");

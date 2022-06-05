@@ -36,7 +36,6 @@ Functions
 |--------------------|------------------------------|
 | *[collections.ts]* | [`fromIterable()`]           |
 | *[collections.ts]* | [`toArray()`]                |
-| *[combinators.ts]* | [`tee()`]                    |
 | *[drop.ts]*        | [`drop()`]                   |
 | *[drop.ts]*        | [`dropWhile()`]              |
 | *[fold.ts]*        | [`reduce()`]                 |
@@ -45,6 +44,7 @@ Functions
 | *[infinite.ts]*    | [`repeat()`]                 |
 | *[take.ts]*        | [`take()`]                   |
 | *[take.ts]*        | [`takeWhile()`]              |
+| *[tee.ts]*         | [`tee()`]                    |
 | *[testing.ts]*     | [`assertStreams()`]          |
 | *[testing.ts]*     | [`assertStreamStartsWith()`] |
 
@@ -53,15 +53,14 @@ It is going to have more functions later.
 [^1]: All functions are re-exported by [*mod.ts*][Deno Doc] as well.
 
 [collections.ts]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts
-[combinators.ts]: https://doc.deno.land/https://deno.land/x/aitertools/combinators.ts
 [drop.ts]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts
 [fold.ts]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts
 [infinite.ts]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts
 [take.ts]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts
+[tee.ts]: https://doc.deno.land/https://deno.land/x/aitertools/tee.ts
 [testing.ts]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts
 [`fromIterable()`]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts/~/fromIterable
 [`toArray()`]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts/~/toArray
-[`tee()`]: https://doc.deno.land/https://deno.land/x/aitertools/combinators.ts/~/tee
 [`drop()`]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts/~/drop
 [`dropWhile()`]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts/~/dropWhile
 [`reduce()`]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts/~/reduce
@@ -70,5 +69,6 @@ It is going to have more functions later.
 [`repeat()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/repeat
 [`take()`]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts/~/take
 [`takeWhile()`]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts/~/takeWhile
+[`tee()`]: https://doc.deno.land/https://deno.land/x/aitertools/tee.ts/~/tee
 [`assertStreams()`]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts/~/assertStreams
 [`assertStreamStartsWith()`]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts/~/assertStreamStartsWith
