@@ -118,6 +118,8 @@ export function tee<T>(
  * Note that `console.log()` calls in the `source` function are executed only
  * once, and not three times.  Also these numbers are always in the same order.
  *
+ * @template T The type of the elements in the `source` and the returned async
+ *             iterables.
  * @param source The async iterable to duplicate.
  * @param number The number to duplicate the async iterable.
  * @returns An array of duplicated async iterables.

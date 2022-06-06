@@ -42,6 +42,7 @@ Functions
 | *[infinite.ts]*    | [`count()`]                  |
 | *[infinite.ts]*    | [`cycle()`]                  |
 | *[infinite.ts]*    | [`repeat()`]                 |
+| *[map.ts]*         | [`map()`]                    |
 | *[take.ts]*        | [`take()`]                   |
 | *[take.ts]*        | [`takeWhile()`]              |
 | *[tee.ts]*         | [`tee()`]                    |
@@ -56,6 +57,7 @@ It is going to have more functions later.
 [drop.ts]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts
 [fold.ts]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts
 [infinite.ts]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts
+[map.ts]: https://doc.deno.land/https://deno.land/x/aitertools/map.ts
 [take.ts]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts
 [tee.ts]: https://doc.deno.land/https://deno.land/x/aitertools/tee.ts
 [testing.ts]: https://doc.deno.land/https://deno.land/x/aitertools/testing.ts
@@ -67,6 +69,7 @@ It is going to have more functions later.
 [`count()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/count
 [`cycle()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/cycle
 [`repeat()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/repeat
+[`map()`]: https://doc.deno.land/https://deno.land/x/aitertools/map.ts/~/map
 [`take()`]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts/~/take
 [`takeWhile()`]: https://doc.deno.land/https://deno.land/x/aitertools/take.ts/~/takeWhile
 [`tee()`]: https://doc.deno.land/https://deno.land/x/aitertools/tee.ts/~/tee
