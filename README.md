@@ -38,6 +38,7 @@ Functions
 | *[collections.ts]* | [`toArray()`]                |
 | *[drop.ts]*        | [`drop()`]                   |
 | *[drop.ts]*        | [`dropWhile()`]              |
+| *[filter.ts]*      | [`filter()`]                 |
 | *[fold.ts]*        | [`reduce()`]                 |
 | *[infinite.ts]*    | [`count()`]                  |
 | *[infinite.ts]*    | [`cycle()`]                  |
@@ -55,6 +56,7 @@ It is going to have more functions later.
 
 [collections.ts]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts
 [drop.ts]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts
+[filter.ts]: https://doc.deno.land/https://deno.land/x/aitertools/filter.ts
 [fold.ts]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts
 [infinite.ts]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts
 [map.ts]: https://doc.deno.land/https://deno.land/x/aitertools/map.ts
@@ -65,6 +67,7 @@ It is going to have more functions later.
 [`toArray()`]: https://doc.deno.land/https://deno.land/x/aitertools/collections.ts/~/toArray
 [`drop()`]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts/~/drop
 [`dropWhile()`]: https://doc.deno.land/https://deno.land/x/aitertools/drop.ts/~/dropWhile
+[`filter()`]: https://doc.deno.land/https://deno.land/x/aitertools/filter.ts/~/filter
 [`reduce()`]: https://doc.deno.land/https://deno.land/x/aitertools/fold.ts/~/reduce
 [`count()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/count
 [`cycle()`]: https://doc.deno.land/https://deno.land/x/aitertools/infinite.ts/~/cycle
