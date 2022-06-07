@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.140.0/testing/asserts.ts";
 import * as fc from "https://cdn.skypack.dev/fast-check@3.0.0?dts";
-import { fromIterable, toArray, toSet } from "../collections.ts";
+import { fromIterable, toArray, toMap, toSet } from "../collections.ts";
 import { assertStreams } from "../testing.ts";
 import { getAsyncIterable } from "./testing_test.ts";
 
@@ -93,4 +93,34 @@ Deno.test("toSet() [fc]", async () => {
       ),
     );
   }
+});
+
+Deno.test("toMap()", async () => {
+  assertEquals(
+    await toMap(getAsyncIterable(["foo", 1], ["bar", 2], ["baz", 3])),
+    new Map([["foo", 1], ["bar", 2], ["baz", 3]]),
+  );
+  assertEquals(
+    await toMap(getAsyncIterable(["foo", 1], ["bar", 2], ["foo", 3])),
+    new Map([["foo", 3], ["bar", 2]]),
+  );
+});
+
+Deno.test("toMap() [fc]", async () => {
+  await fc.assert(
+    fc.asyncProperty(
+      fc.array(fc.tuple(fc.string(), fc.string())),
+      async (tuples) => {
+        const iterable = fromIterable(tuples);
+        assertEquals(await toMap(iterable), new Map(tuples));
+        if (tuples.length < 1) return;
+        const dups = fromIterable(
+          [...tuples, [tuples[0][0], "overwritten"]] as [string, string][],
+        );
+        const expected = new Map(tuples);
+        expected.set(tuples[0][0], "overwritten");
+        assertEquals(await toMap(dups), expected);
+      },
+    ),
+  );
 });

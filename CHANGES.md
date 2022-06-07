@@ -8,6 +8,7 @@ Version 0.3.0
 
 To be released.
 
+ -  Added `toMap()` function.
  -  Added `toSet()` function.
  -  Added *tee.ts* module.
  -  Added `tee()` function.
