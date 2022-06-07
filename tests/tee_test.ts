@@ -1,7 +1,7 @@
 import * as fc from "https://cdn.skypack.dev/fast-check@3.0.0?dts";
-import { fromIterable } from "./collections.ts";
-import { tee } from "./tee.ts";
-import { assertStreams, assertStreamStartsWith } from "./testing.ts";
+import { fromIterable } from "../collections.ts";
+import { tee } from "../tee.ts";
+import { assertStreams, assertStreamStartsWith } from "../testing.ts";
 
 async function* getRandomNumbers(): AsyncIterableIterator<number> {
   while (true) yield Math.random();
