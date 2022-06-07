@@ -3,11 +3,27 @@
 Changelog
 =========
 
+Version 0.3.1
+-------------
+
+Released on June 8, 2022.
+
+ -  Added the following missing re-exports to *mod.ts* module:
+     -  `toMap()` from *collections.ts*
+     -  `toSet()` from *collections.ts*
+     -  `concat()` from *concat.ts*
+     -  `drop()` from *drop.ts*
+     -  `dropWhile()` from *drop.ts*
+     -  `filter()` from *filter.ts*
+     -  `map()` from *map.ts*
+
+
 Version 0.3.0
 -------------
 
 Released on June 8, 2022.
 
+ -  Added `fromIterable()` function.
  -  Added `toMap()` function.
  -  Added `toSet()` function.
  -  Added *concat.ts* module.
@@ -18,7 +34,6 @@ Released on June 8, 2022.
  -  Added *filter.ts* module.
  -  Added `filter()` function.
  -  Added *fold.ts* module.
- -  Added `fromIterable()` function.
  -  Added `reduce()` function.
  -  Added *map.ts* module.
  -  Added `map()` function.
