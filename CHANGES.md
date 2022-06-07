@@ -10,8 +10,8 @@ To be released.
 
  -  Added `toMap()` function.
  -  Added `toSet()` function.
- -  Added *tee.ts* module.
- -  Added `tee()` function.
+ -  Added *concat.ts* module.
+ -  Added `concat()` function.
  -  Added *drop.ts* module.
  -  Added `drop()` function.
  -  Added `dropWhile()` function.
@@ -22,6 +22,8 @@ To be released.
  -  Added `reduce()` function.
  -  Added *map.ts* module.
  -  Added `map()` function.
+ -  Added *tee.ts* module.
+ -  Added `tee()` function.
  -  Added optional parameter `msg` to `assertStreams<T>()` function.
  -  Added optional parameter `msg` to `assertStreamStartsWith<T>()` function.
 
