@@ -6,7 +6,7 @@ Changelog
 Version 0.3.0
 -------------
 
-To be released.
+Released on June 8, 2022.
 
  -  Added `toMap()` function.
  -  Added `toSet()` function.
