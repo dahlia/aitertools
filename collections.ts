@@ -61,3 +61,48 @@ export async function toArray<T>(source: AsyncIterable<T>): Promise<T[]> {
   for await (const value of source) result.push(value);
   return result;
 }
+
+/**
+ * Creates a set from an async iterable.
+ *
+ * ``` typescript
+ * import { toSet } from "./collections.ts";
+ *
+ * async function* gen() { yield "foo"; yield "bar"; yield "baz"; }
+ * const set = await toSet(gen());
+ * ```
+ *
+ * The `set` variable will be a set like `new Set(["foo", "bar", "baz"])`.
+ *
+ * Duplicate elements are removed except for the first occurrence of each
+ * element.  E.g.:
+ *
+ * ``` typescript
+ * import { toSet } from "./collections.ts";
+ *
+ * async function* gen() { yield "foo"; yield "bar"; yield "foo"; }
+ * const set = await toSet(gen());
+ * ```
+ *
+ * The `set` variable will be a set like `new Set(["foo", "bar"])`.
+ *
+ * Note that its first parameter is assumed to be finite; otherwise, it will
+ * never return.  The following example will never return:
+ *
+ * ``` typescript
+ * import { toSet } from "./collections.ts";
+ * import { count } from "./infinite.ts";
+ *
+ * await toSet(count(0));
+ * ```
+ *
+ * @template T The type of the elements in the `source` and the returned set.
+ * @param source An async iterable to create a set from.  It must be finite.
+ * @returns A set that contains the elements from the `source` iterable.
+ *          Duplicate elements are removed except for the first one.
+ */
+export async function toSet<T>(source: AsyncIterable<T>): Promise<Set<T>> {
+  const result = new Set<T>();
+  for await (const value of source) result.add(value);
+  return result;
+}

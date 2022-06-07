@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.140.0/testing/asserts.ts";
 import * as fc from "https://cdn.skypack.dev/fast-check@3.0.0?dts";
-import { fromIterable, toArray } from "../collections.ts";
+import { fromIterable, toArray, toSet } from "../collections.ts";
 import { assertStreams } from "../testing.ts";
 import { getAsyncIterable } from "./testing_test.ts";
 
@@ -60,6 +60,35 @@ Deno.test("toArray() [fc]", async () => {
         async (array) => {
           const iterable = getAsyncIterable.apply(globalThis, array);
           assertEquals(await toArray(iterable), array);
+        },
+      ),
+    );
+  }
+});
+
+Deno.test("toSet()", async () => {
+  assertEquals(await toSet(getAsyncIterable(1, 2, 3)), new Set([1, 2, 3]));
+  assertEquals(
+    await toSet(getAsyncIterable("foo", "bar", "baz", "qux")),
+    new Set(["foo", "bar", "baz", "qux"]),
+  );
+  assertEquals(
+    await toSet(getAsyncIterable("foo", "bar", "baz", "qux", "foo", "bar")),
+    new Set(["foo", "bar", "baz", "qux"]),
+  );
+});
+
+Deno.test("toSet() [fc]", async () => {
+  const arbs: fc.Arbitrary<unknown>[] = [fc.integer(), fc.string()];
+  for (const arb of arbs) {
+    await fc.assert(
+      fc.asyncProperty(
+        fc.array(arb),
+        async (array) => {
+          const iterable = getAsyncIterable.apply(globalThis, array);
+          assertEquals(await toSet(iterable), new Set(array));
+          const dups = getAsyncIterable.apply(globalThis, [...array, ...array]);
+          assertEquals(await toSet(dups), new Set(array));
         },
       ),
     );
