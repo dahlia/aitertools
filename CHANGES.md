@@ -8,6 +8,9 @@ Version 0.4.0
 
 To be released.
 
+ -  Added *unique.ts* module.
+ -  Added `unique()` function.
+
 
 Version 0.3.1
 -------------
