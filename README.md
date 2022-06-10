@@ -23,8 +23,8 @@ See also the [complete API reference][Deno Doc].
 [License badge]: https://img.shields.io/github/license/dahlia/aitertools
 [Deno Doc]: https://doc.deno.land/https://deno.land/x/aitertools/mod.ts
 [Deno Doc badge]: https://img.shields.io/badge/api-deno%20doc-blue
-[GitHub Actions]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml
-[GitHub Actions status badge]: https://github.com/dahlia/aitertools/actions/workflows/test.yaml/badge.svg
+[GitHub Actions]: https://github.com/dahlia/aitertools/actions/workflows/build.yaml
+[GitHub Actions status badge]: https://github.com/dahlia/aitertools/actions/workflows/build.yaml/badge.svg
 [Codecov badge]: https://codecov.io/gh/dahlia/aitertools/branch/main/graph/badge.svg?token=UBDX4Inrz6
 [Codecov]: https://codecov.io/gh/dahlia/aitertools
 [async iterables]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of

@@ -1,0 +1,65 @@
+name: build
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macos-12, ubuntu-22.04, windows-2022]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    env:
+      OS: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: >-
+          deno test
+          --doc
+          --coverage=.cov
+      - run: deno coverage --lcov .cov > .cov.lcov
+      - uses: codecov/codecov-action@v2
+        with:
+          files: .cov.lcov
+          env_vars: OS
+
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: deno lint
+      - run: deno fmt --check --ignore=.vscode/
+
+  release:
+    if: github.event_name == 'push'
+    needs: [test, lint]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: deno install -Af --unstable https://x.nest.land/eggs@0.3.10/eggs.ts
+      - run: "eggs link '${{ secrets.NEST_API_KEY }}'"
+      - if: github.ref_type != 'tag'
+        uses: mikefarah/yq@master
+        with:
+          cmd: >-
+            yq -i
+            ' strenv(GITHUB_RUN_NUMBER) as $run-number
+            | strenv(GITHUB_SHA) as $sha
+            | .version = .version + "-dev." + $run-number + "+" + $sha
+            | .version |= (match("^[^+]+\+[a-f0-9]{7}") | .string)
+            | .unstable = true'
+            egg.yaml
+      - run: eggs publish --debug --yes --no-check
+      - if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: eggs-debug.log
+          path: ${{ github.workspace }}/eggs-debug.log

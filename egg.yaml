@@ -1,0 +1,27 @@
+$schema: https://x.nest.land/eggs@0.3.10/src/schema.json
+name: aitertools
+description: Well-tested utility functions dealing with async iterables
+homepage: https://github.com/dahlia/aitertools
+version: 0.4.0
+releaseType: null
+unstable: false
+unlisted: false
+entry: ./mod.ts
+files:
+- ./*.md
+- ./*.ts
+- ./*.yaml
+- ./*.yml
+- ./.github/**/*.yaml
+- ./.vscode/*.json
+- ./hooks/*
+- ./tests/*.ts
+- ./LICENSE
+ignore:
+- ./.git/*
+- ./.git/**/*
+- ./egg.yml
+checkFormat: true
+checkTests: true
+checkInstallation: false
+check: true
