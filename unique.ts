@@ -80,3 +80,54 @@ export async function* unique<T>(
     }
   }
 }
+
+/**
+ * Groups elmenets of an async interable `source` according to a specified
+ * `keySelector` function and creates a map of each group key to the elements in
+ * that group.  Key values are compared using the `===` operator.
+ *
+ * ``` typescript
+ * import { groupBy } from "./unique.ts";
+ *
+ * interface IdName { id: number; name: string; }
+ * async function* gen(): AsyncIterableIterator<IdName> {
+ *   yield { id: 1, name: "foo" };
+ *   yield { id: 2, name: "bar" };
+ *   yield { id: 3, name: "bar" };
+ *   yield { id: 4, name: "foo" };
+ * }
+ *
+ * const map = await groupBy<string, IdName>(gen(), o => o.name);
+ * console.log(map);
+ * ```
+ *
+ * The above example will print the following:
+ *
+ * ~~~
+ * Map {
+ *  "foo" => [ { id: 1, name: "foo" }, { id: 4, name: "foo" } ],
+ *  "bar" => [ { id: 2, name: "bar" }, { id: 3, name: "bar" } ]
+ * }
+ * ~~~
+ *
+ * @template K The type of the grouping keys.
+ * @template E The type of the elements in the `source`.
+ * @param source An async iterable to group elements from.  It has to be finite.
+ * @param keySelector A function to to extract the key for each element.  It can
+ *                    be either sync or async.
+ * @returns A map of each group key to the elements in that group.
+ */
+export async function groupBy<K, E>(
+  source: Iterable<E> | AsyncIterable<E>,
+  keySelector: (element: E) => (K | Promise<K>),
+): Promise<Map<K, E[]>> {
+  const groups = new Map<K, E[]>();
+  for await (const el of source) {
+    let key = keySelector(el);
+    if (key instanceof Promise) key = await key;
+    const group = groups.get(key);
+    if (group == null) groups.set(key, [el]);
+    else group.push(el);
+  }
+  return groups;
+}

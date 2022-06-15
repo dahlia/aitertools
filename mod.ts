@@ -8,4 +8,4 @@ export { map } from "./map.ts";
 export { take, takeWhile } from "./take.ts";
 export { tee } from "./tee.ts";
 export { assertStreams, assertStreamStartsWith } from "./testing.ts";
-export { unique } from "./unique.ts";
+export { groupBy, unique } from "./unique.ts";

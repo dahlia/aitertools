@@ -9,6 +9,7 @@ Version 0.4.0
 To be released.
 
  -  Added *unique.ts* module.
+ -  Added `groupBy()` function.
  -  Added `unique()` function.
 
 
