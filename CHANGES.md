@@ -6,7 +6,7 @@ Changelog
 Version 0.4.0
 -------------
 
-To be released.
+To be released.  Unreleased versions are available on [nest.land].
 
  -  Added *unique.ts* module.
  -  Added `groupBy()` function.
@@ -85,3 +85,6 @@ Version 0.1.0
 -------------
 
 Initial release.  Released on May 23, 2022.
+
+
+[nest.land]: https://nest.land/package/aitertools

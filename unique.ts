@@ -119,7 +119,7 @@ export async function* unique<T>(
  */
 export async function groupBy<K, E>(
   source: Iterable<E> | AsyncIterable<E>,
-  keySelector: (element: E) => (K | Promise<K>),
+  keySelector: (element: E) => K | Promise<K>,
 ): Promise<Map<K, E[]>> {
   const groups = new Map<K, E[]>();
   for await (const el of source) {

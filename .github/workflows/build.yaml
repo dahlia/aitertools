@@ -57,7 +57,12 @@ jobs:
             | .version |= (match("^[^+]+\+[a-f0-9]{7}") | .string)
             | .unstable = true'
             egg.yaml
-      - run: eggs publish --debug --yes --no-check
+      - run: |
+          # Try up to 3 times as `eggs publish` frequently fails due to unknown
+          # reason (I guess it's a bug on the server side):
+          for _ in 1 2 3; do
+            eggs publish --debug --yes --no-check || continue
+          done
       - if: failure()
         uses: actions/upload-artifact@v3
         with:

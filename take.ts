@@ -123,7 +123,7 @@ export async function* take<T>(
  */
 export async function* takeWhile<T>(
   source: Iterable<T> | AsyncIterable<T>,
-  predicate: (value: T, index: number) => (boolean | Promise<boolean>),
+  predicate: (value: T, index: number) => boolean | Promise<boolean>,
 ): AsyncIterableIterator<T> {
   let i = 0;
   for await (const value of source) {

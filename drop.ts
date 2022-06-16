@@ -121,7 +121,7 @@ export async function* drop<T>(
  */
 export async function* dropWhile<T>(
   source: Iterable<T> | AsyncIterable<T>,
-  predicate: (value: T, index: number) => (boolean | Promise<boolean>),
+  predicate: (value: T, index: number) => boolean | Promise<boolean>,
 ): AsyncIterableIterator<T> {
   let i = 0;
   let ignorePredicate = false;
