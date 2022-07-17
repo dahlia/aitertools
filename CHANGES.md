@@ -6,7 +6,7 @@ Changelog
 Version 0.4.0
 -------------
 
-To be released.  Unreleased versions are available on [nest.land].
+Released on July 17, 2022.
 
  -  Added *unique.ts* module.
  -  Added `groupBy()` function.
