@@ -3,6 +3,12 @@
 Changelog
 =========
 
+Version 0.5.0
+-------------
+
+To be released.  Unreleased versions are available on [nest.land].
+
+
 Version 0.4.0
 -------------
 
