@@ -1,4 +1,4 @@
-import * as fc from "https://cdn.skypack.dev/fast-check@3.0.0?dts";
+import * as fc from "npm:fast-check@3.12.0";
 import { fromIterable } from "../collections.ts";
 import { concat } from "../concat.ts";
 import { assertStreams } from "../testing.ts";

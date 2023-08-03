@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.140.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.196.0/assert/mod.ts";
 
 /**
  * Makes an assertion that the elements of the `actual` iterable are equal to

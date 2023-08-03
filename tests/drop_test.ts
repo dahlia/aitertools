@@ -1,5 +1,5 @@
-import { assert } from "https://deno.land/std@0.140.0/testing/asserts.ts";
-import * as fc from "https://cdn.skypack.dev/fast-check@3.0.0?dts";
+import { assert } from "https://deno.land/std@0.196.0/assert/mod.ts";
+import * as fc from "npm:fast-check@3.12.0";
 import { fromIterable } from "../collections.ts";
 import { drop, dropWhile } from "../drop.ts";
 import { count } from "../infinite.ts";

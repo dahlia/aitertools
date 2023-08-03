@@ -1,4 +1,4 @@
-import { assertThrows } from "https://deno.land/std@0.140.0/testing/asserts.ts";
+import { assertThrows } from "https://deno.land/std@0.196.0/assert/mod.ts";
 import { count, cycle, repeat } from "../infinite.ts";
 import { assertStreams, assertStreamStartsWith } from "../testing.ts";
 
