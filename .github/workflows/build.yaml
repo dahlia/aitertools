@@ -8,6 +8,9 @@ jobs:
         os: [macos-12, ubuntu-22.04, windows-2022]
       fail-fast: false
     runs-on: ${{ matrix.os }}
+    permissions:
+      checks: write
+      pull-requests: write
     env:
       OS: ${{ matrix.os }}
     steps:
@@ -19,6 +22,15 @@ jobs:
           deno test
           --doc
           --coverage=.cov
+          --junit-path=.test-report.xml
+      - uses: EnricoMi/publish-unit-test-result-action@v2
+        if: runner.os == 'Linux' && always()
+        with:
+          files: .test-report.xml
+      - uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        if: runner.os != 'Linux' && always()
+        with:
+          files: .test-report.xml
       - run: deno coverage --lcov .cov > .cov.lcov
       - uses: codecov/codecov-action@v2
         with:
