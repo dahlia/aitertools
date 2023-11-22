@@ -1,5 +1,5 @@
-import { assertEquals } from "https://deno.land/std@0.196.0/assert/mod.ts";
-import * as fc from "npm:fast-check@3.12.0";
+import { assertEquals } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import * as fc from "npm:fast-check@3.14.0";
 import { fromIterable, toArray, toMap, toSet } from "../collections.ts";
 import { assertStreams } from "../testing.ts";
 import { getAsyncIterable } from "./testing_test.ts";

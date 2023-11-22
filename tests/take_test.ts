@@ -1,5 +1,5 @@
-import { assert } from "https://deno.land/std@0.196.0/assert/mod.ts";
-import * as fc from "npm:fast-check@3.12.0";
+import { assert } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import * as fc from "npm:fast-check@3.14.0";
 import { fromIterable } from "../collections.ts";
 import { count } from "../infinite.ts";
 import { take, takeWhile } from "../take.ts";

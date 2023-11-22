@@ -1,8 +1,8 @@
 import {
   AssertionError,
   assertRejects,
-} from "https://deno.land/std@0.196.0/assert/mod.ts";
-import * as fc from "npm:fast-check@3.12.0";
+} from "https://deno.land/std@0.207.0/assert/mod.ts";
+import * as fc from "npm:fast-check@3.14.0";
 import { fromIterable } from "../collections.ts";
 import { assertStreams, assertStreamStartsWith } from "../testing.ts";
 

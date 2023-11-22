@@ -1,7 +1,7 @@
 import {
   assertEquals,
   assertRejects,
-} from "https://deno.land/std@0.196.0/assert/mod.ts";
+} from "https://deno.land/std@0.207.0/assert/mod.ts";
 import { reduce } from "../fold.ts";
 import { getAsyncIterable } from "./testing_test.ts";
 
