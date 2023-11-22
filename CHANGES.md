@@ -8,6 +8,10 @@ Version 0.5.0
 
 To be released.  Unreleased versions are available on [nest.land].
 
+ -  Added *range.ts* module.
+ -  Added `range()` function.
+ -  Added `Range` class.
+
 
 Version 0.4.0
 -------------

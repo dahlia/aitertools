@@ -5,6 +5,7 @@ export { filter } from "./filter.ts";
 export { reduce } from "./fold.ts";
 export { count, cycle, repeat } from "./infinite.ts";
 export { map } from "./map.ts";
+export { Range, range } from "./range.ts";
 export { take, takeWhile } from "./take.ts";
 export { tee } from "./tee.ts";
 export { assertStreams, assertStreamStartsWith } from "./testing.ts";
