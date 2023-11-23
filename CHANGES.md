@@ -6,7 +6,7 @@ Changelog
 Version 0.5.0
 -------------
 
-To be released.  Unreleased versions are available on [nest.land].
+Released on November 23, 2023.
 
  -  Now aitertools is [available on npm].
  -  Now every submodule is inside *src/* directory.  This is a breaking change
