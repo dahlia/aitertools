@@ -4,6 +4,7 @@ aitertools
 ==========
 
 [![Latest version][Tag badge]][Deno module]
+[![Published on npm][npm badge]][npm]
 [![Published on nest.land][nest.land badge]][nest.land]
 [![LGPL 3.0][License badge]](./LICENSE)
 [![Deno Doc (API references)][Deno Doc badge]][Deno Doc]
@@ -12,10 +13,12 @@ aitertools
 
 This library provides a [well-tested][Codecov] collection of small utility
 functions dealing with [async iterables].  You can think of it as .NET LINQ or
-Python aitertools for [Deno].
+Python aitertools for [Deno] & Node.js.
 
 [Tag badge]: https://img.shields.io/github/v/tag/dahlia/aitertools
 [Deno module]: https://deno.land/x/aitertools
+[npm badge]: https://img.shields.io/npm/v/aitertools
+[npm]: https://www.npmjs.com/package/aitertools
 [nest.land badge]: https://nest.land/badge.svg
 [nest.land]: https://nest.land/package/aitertools
 [License badge]: https://img.shields.io/github/license/dahlia/aitertools
@@ -80,15 +83,30 @@ In Deno:
 import * as aitertools from "https://deno.land/x/aitertools/mod.ts";
 ~~~
 
+In Node.js:
+
+~~~ console
+$ npm add aitertools
+~~~
+
+~~~ typescript
+import * as aitertools from "aitertools";
+~~~
 
 
 Changelog
 ---------
 
 See *[CHANGES.md](CHANGES.md)* file.  Note that unreleased versions are also
-available on [nest.land]:
+available on [nest.land] for Deno:
 
 ~~~ typescript
 import * as aitertools
   from "https://x.nest.land/aitertools@0.4.0-dev.15+3f191d7/mod.ts";
+~~~
+
+… and on [npm] with `dev` tag for Node.js:
+
+~~~ console
+$ npm add aitertools@dev
 ~~~

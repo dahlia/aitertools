@@ -8,12 +8,15 @@ Version 0.5.0
 
 To be released.  Unreleased versions are available on [nest.land].
 
+ -  Now aitertools is [available on npm].
  -  Now every submodule is inside *src/* directory.  This is a breaking change
     for users whom import submodules directly.  For users whom import from
     *mod.ts* module, this is not a breaking change.
  -  Added *src/range.ts* module.
  -  Added `range()` function.
  -  Added `Range` class.
+
+[available on npm]: https://www.npmjs.com/package/aitertools
 
 
 Version 0.4.0
