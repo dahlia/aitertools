@@ -11,13 +11,8 @@ aitertools
 [![Codecov][Codecov badge]][Codecov]
 
 This library provides a [well-tested][Codecov] collection of small utility
-functions dealing with [async iterables].  You can think of it as LINQ or aitertools for [Deno].
-
-~~~ typescript
-import * as aitertools from "https://deno.land/x/aitertools/mod.ts";
-~~~
-
-See also the [complete API reference][Deno Doc].
+functions dealing with [async iterables].  You can think of it as .NET LINQ or
+Python aitertools for [Deno].
 
 [Tag badge]: https://img.shields.io/github/v/tag/dahlia/aitertools
 [Deno module]: https://deno.land/x/aitertools
@@ -32,6 +27,59 @@ See also the [complete API reference][Deno Doc].
 [Codecov]: https://codecov.io/gh/dahlia/aitertools
 [async iterables]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
 [Deno]: https://deno.land/
+
+
+Functions
+---------
+
+For the complete list of functions, see the [complete API reference][Deno Doc].
+
+ -  `concat(...sources)`: Concatenate multiple async iterables into one.
+ -  `take(source, count)`: Take the first `count` items from the `source`.
+ -  `drop(source, count)`: Drop the first `count` items from the `source`.
+ -  `takeWhile(source, predicate)`: Take items from the `source` while the
+    `predicate` returns `true`.
+ -  `dropWhile(source, predicate)`: Drop items from the `source` while the
+    `predicate` returns `true`.
+ -  `map(mapper, ...sources)`: Apply the `mapper` to each item in the `sources`.
+ -  `filter(predicate, ...sources)`: Filter items in the `sources` by the
+    `predicate`.
+ -  `reduce(reducer, source, initial?)`: Reduce the `source` to a single value
+    by the `reducer`, optionally with the `initial` value.
+ -  `tee(source, numbeer)`: Effectively duplicate the `source` into `number`
+    of async iterables.
+ -  `groupBy(source, keySelector)`: Group items in the `source` by the
+    `keySelector`.
+ -  `unique(source, keySelector?)`: Eliminate duplicate items in the `source`,
+    optionally by the `keySelector`.
+ -  `range(start?, stop, step?)`: Generate a sequence of numbers from `start`
+    to `stop` by `step`.
+ -  `count(start?, step?)`: Generate a sequence of numbers from `start` by
+    `step` infinitely.
+ -  `cycle(source)`: Cycle the `source` infinitely.
+ -  `repeat(value, times?)`: Repeat the `value` for `times` times, or
+    infinitely if `times` is not specified.
+ -  `fromIterable(source)`: Convert an iterable to an async iterable.
+ -  `toArray(source)`: Convert an async iterable to an array.
+ -  `toSet(source)`: Convert an async iterable to a `Set`.
+ -  `toMap(source, keySelector, valueSelector?)`: Convert an async iterable to
+    a `Map`.
+ -  `assertStreams(actual, expected, msg?)`: Asset that an async iterable
+    `actual` is equal to an array `expected`.
+ -  `assertStreamStartsWith(actual, expected, msg?)`: Asset that an async
+    iterable `actual` (which is possibly infinite) starts with an array
+    `expected`.
+
+
+Usage
+-----
+
+In Deno:
+
+~~~ typescript
+import * as aitertools from "https://deno.land/x/aitertools/mod.ts";
+~~~
+
 
 
 Changelog
