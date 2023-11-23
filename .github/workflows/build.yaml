@@ -56,19 +56,34 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
+      - id: determine-version
+        run: deno run -A scripts/determine-version.ts
+      - if: github.ref_type == 'tag'
+        run: '[[ "$VERSION" = "$GITHUB_REF_NAME" ]]'
+        env:
+          VERSION: ${{ steps.determine-version.outputs.version }}
       - run: deno install -Af --unstable https://x.nest.land/eggs@0.3.10/eggs.ts
       - run: "eggs link '${{ secrets.NEST_API_KEY }}'"
+      - if: github.ref_type == 'tag'
+        uses: mikefarah/yq@master
+        with:
+          cmd: >-
+            yq -i
+            ' strenv(GITHUB_REF_NAME) as $version
+            | .version = $version
+            | .unstable = false'
+            egg.yaml
       - if: github.ref_type != 'tag'
         uses: mikefarah/yq@master
         with:
           cmd: >-
             yq -i
-            ' strenv(GITHUB_RUN_NUMBER) as $run-number
-            | strenv(GITHUB_SHA) as $sha
-            | .version = .version + "-dev." + $run-number + "+" + $sha
-            | .version |= (match("^[^+]+\+[a-f0-9]{7}") | .string)
+            ' strenv(VERSION) as $version
+            | .version = $version
             | .unstable = true'
             egg.yaml
+        env:
+          VERSION: ${{ steps.determine-version.outputs.version }}
       - run: |
           # Try up to 3 times as `eggs publish` frequently fails due to unknown
           # reason (I guess it's a bug on the server side):

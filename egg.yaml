@@ -2,7 +2,6 @@ $schema: https://x.nest.land/eggs@0.3.10/src/schema.json
 name: aitertools
 description: Well-tested utility functions dealing with async iterables
 homepage: https://github.com/dahlia/aitertools
-version: 0.5.0
 releaseType: null
 unstable: false
 unlisted: false
