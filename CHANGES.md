@@ -15,6 +15,7 @@ To be released.  Unreleased versions are available on [nest.land].
  -  Added *src/range.ts* module.
  -  Added `range()` function.
  -  Added `Range` class.
+ -  Added `takeEnd()` function.
 
 [available on npm]: https://www.npmjs.com/package/aitertools
 

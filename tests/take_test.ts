@@ -1,8 +1,11 @@
-import { assert } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import {
+  assert,
+  assertRejects,
+} from "https://deno.land/std@0.207.0/assert/mod.ts";
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable } from "../src/collections.ts";
+import { fromIterable, toArray } from "../src/collections.ts";
 import { count } from "../src/infinite.ts";
-import { take, takeWhile } from "../src/take.ts";
+import { take, takeEnd, takeWhile } from "../src/take.ts";
 import { assertStreams } from "../src/testing.ts";
 
 Deno.test("take()", async () => {
@@ -73,4 +76,57 @@ Deno.test("takeWhile() [fc]", async () => {
       ),
     );
   }
+});
+
+Deno.test("takeEnd() [fc]", async () => {
+  await fc.assert(
+    fc.asyncProperty(
+      fc.oneof(fc.array(fc.integer()), fc.array(fc.string())),
+      fc.integer(),
+      async (source: unknown[], count: number) => {
+        await assertStreams(
+          takeEnd(source, count),
+          count > 0 ? source.slice(-count) : [],
+        );
+        await assertStreams(
+          takeEnd(fromIterable(source), count),
+          count > 0 ? source.slice(-count) : [],
+        );
+      },
+    ),
+  );
+
+  await fc.assert(
+    fc.asyncProperty(
+      fc.oneof(fc.array(fc.integer()), fc.array(fc.string())),
+      fc.constantFrom(Infinity, -Infinity, NaN),
+      async (source: unknown[], count: number) => {
+        await assertRejects(
+          () => toArray(takeEnd(source, count)),
+          RangeError,
+        );
+        await assertRejects(
+          () => toArray(takeEnd(fromIterable(source), count)),
+          RangeError,
+        );
+      },
+    ),
+  );
+
+  await fc.assert(
+    fc.asyncProperty(
+      fc.oneof(fc.array(fc.integer()), fc.array(fc.string())),
+      fc.double().filter((n) => !Number.isInteger(n)),
+      async (source: unknown[], count: number) => {
+        await assertRejects(
+          () => toArray(takeEnd(source, count)),
+          RangeError,
+        );
+        await assertRejects(
+          () => toArray(takeEnd(fromIterable(source), count)),
+          RangeError,
+        );
+      },
+    ),
+  );
 });
