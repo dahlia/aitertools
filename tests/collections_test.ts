@@ -1,7 +1,7 @@
 import { assertEquals } from "https://deno.land/std@0.207.0/assert/mod.ts";
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable, toArray, toMap, toSet } from "../collections.ts";
-import { assertStreams } from "../testing.ts";
+import { fromIterable, toArray, toMap, toSet } from "../src/collections.ts";
+import { assertStreams } from "../src/testing.ts";
 import { getAsyncIterable } from "./testing_test.ts";
 
 function* toIterable<T>(...values: T[]): Iterable<T> {

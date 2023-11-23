@@ -1,7 +1,7 @@
 import { assertEquals } from "https://deno.land/std@0.207.0/assert/mod.ts";
-import { tee } from "../tee.ts";
-import { assertStreams } from "../testing.ts";
-import { groupBy, unique } from "../unique.ts";
+import { tee } from "../src/tee.ts";
+import { assertStreams } from "../src/testing.ts";
+import { groupBy, unique } from "../src/unique.ts";
 import { getAsyncIterable } from "./testing_test.ts";
 
 Deno.test("unqiue(source)", async () => {

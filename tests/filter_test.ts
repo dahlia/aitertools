@@ -1,6 +1,6 @@
-import { filter } from "../filter.ts";
-import { count } from "../infinite.ts";
-import { assertStreams, assertStreamStartsWith } from "../testing.ts";
+import { filter } from "../src/filter.ts";
+import { count } from "../src/infinite.ts";
+import { assertStreams, assertStreamStartsWith } from "../src/testing.ts";
 import { getAsyncIterable } from "./testing_test.ts";
 
 Deno.test("filter()", async () => {

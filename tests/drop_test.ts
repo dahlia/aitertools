@@ -1,10 +1,10 @@
 import { assert } from "https://deno.land/std@0.207.0/assert/mod.ts";
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable } from "../collections.ts";
-import { drop, dropWhile } from "../drop.ts";
-import { count } from "../infinite.ts";
-import { take } from "../take.ts";
-import { assertStreams, assertStreamStartsWith } from "../testing.ts";
+import { fromIterable } from "../src/collections.ts";
+import { drop, dropWhile } from "../src/drop.ts";
+import { count } from "../src/infinite.ts";
+import { take } from "../src/take.ts";
+import { assertStreams, assertStreamStartsWith } from "../src/testing.ts";
 
 Deno.test("drop()", async () => {
   await assertStreamStartsWith(drop(count(0), 0), [0, 1, 2, 3, 4, 5, 6, 7, 8]);

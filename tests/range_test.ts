@@ -6,8 +6,8 @@ import {
   assertThrows,
 } from "https://deno.land/std@0.207.0/assert/mod.ts";
 import * as fc from "npm:fast-check@3.14.0";
-import { assertStreams } from "../testing.ts";
-import { Range, range } from "../range.ts";
+import { assertStreams } from "../src/testing.ts";
+import { Range, range } from "../src/range.ts";
 
 function validNumber(): fc.Arbitrary<number> {
   return fc.oneof(

@@ -1,7 +1,7 @@
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable } from "../collections.ts";
-import { concat } from "../concat.ts";
-import { assertStreams } from "../testing.ts";
+import { fromIterable } from "../src/collections.ts";
+import { concat } from "../src/concat.ts";
+import { assertStreams } from "../src/testing.ts";
 import { getAsyncIterable } from "./testing_test.ts";
 
 Deno.test("concat()", async () => {

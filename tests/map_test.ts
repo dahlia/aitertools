@@ -1,7 +1,7 @@
 import { assertRejects } from "https://deno.land/std@0.207.0/assert/mod.ts";
-import { count, repeat } from "../infinite.ts";
-import { map } from "../map.ts";
-import { assertStreams, assertStreamStartsWith } from "../testing.ts";
+import { count, repeat } from "../src/infinite.ts";
+import { map } from "../src/map.ts";
+import { assertStreams, assertStreamStartsWith } from "../src/testing.ts";
 
 Deno.test("map()", async () => {
   await assertStreams(

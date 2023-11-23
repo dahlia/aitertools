@@ -1,6 +1,6 @@
 import { assertThrows } from "https://deno.land/std@0.207.0/assert/mod.ts";
-import { count, cycle, repeat } from "../infinite.ts";
-import { assertStreams, assertStreamStartsWith } from "../testing.ts";
+import { count, cycle, repeat } from "../src/infinite.ts";
+import { assertStreams, assertStreamStartsWith } from "../src/testing.ts";
 
 Deno.test("count()", async () => {
   await assertStreamStartsWith(count(0), [0, 1, 2, 3, 4, 5]);

@@ -1,9 +1,9 @@
 import { assert } from "https://deno.land/std@0.207.0/assert/mod.ts";
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable } from "../collections.ts";
-import { count } from "../infinite.ts";
-import { take, takeWhile } from "../take.ts";
-import { assertStreams } from "../testing.ts";
+import { fromIterable } from "../src/collections.ts";
+import { count } from "../src/infinite.ts";
+import { take, takeWhile } from "../src/take.ts";
+import { assertStreams } from "../src/testing.ts";
 
 Deno.test("take()", async () => {
   await assertStreams(take(count(0), 0), []);

@@ -8,7 +8,10 @@ Version 0.5.0
 
 To be released.  Unreleased versions are available on [nest.land].
 
- -  Added *range.ts* module.
+ -  Now every submodule is inside *src/* directory.  This is a breaking change
+    for users whom import submodules directly.  For users whom import from
+    *mod.ts* module, this is not a breaking change.
+ -  Added *src/range.ts* module.
  -  Added `range()` function.
  -  Added `Range` class.
 

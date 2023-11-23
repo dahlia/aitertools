@@ -3,8 +3,8 @@ import {
   assertRejects,
 } from "https://deno.land/std@0.207.0/assert/mod.ts";
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable } from "../collections.ts";
-import { assertStreams, assertStreamStartsWith } from "../testing.ts";
+import { fromIterable } from "../src/collections.ts";
+import { assertStreams, assertStreamStartsWith } from "../src/testing.ts";
 
 export async function* getAsyncIterable<T>(
   ...args: T[]

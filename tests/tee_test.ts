@@ -1,7 +1,7 @@
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable } from "../collections.ts";
-import { tee } from "../tee.ts";
-import { assertStreams, assertStreamStartsWith } from "../testing.ts";
+import { fromIterable } from "../src/collections.ts";
+import { tee } from "../src/tee.ts";
+import { assertStreams, assertStreamStartsWith } from "../src/testing.ts";
 
 async function* getRandomNumbers(): AsyncIterableIterator<number> {
   while (true) yield Math.random();
