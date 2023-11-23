@@ -5,6 +5,7 @@ import {
 import * as fc from "npm:fast-check@3.14.0";
 import { fromIterable, toArray } from "../src/collections.ts";
 import { count } from "../src/infinite.ts";
+import { range } from "../src/range.ts";
 import { take, takeEnd, takeWhile } from "../src/take.ts";
 import { assertStreams } from "../src/testing.ts";
 
@@ -76,6 +77,12 @@ Deno.test("takeWhile() [fc]", async () => {
       ),
     );
   }
+});
+
+Deno.test("takeEnd()", async () => {
+  await assertStreams(takeEnd(range(5), 0), []);
+  await assertStreams(takeEnd(range(5), 1), [4]);
+  await assertStreams(takeEnd(range(5), 2), [3, 4]);
 });
 
 Deno.test("takeEnd() [fc]", async () => {

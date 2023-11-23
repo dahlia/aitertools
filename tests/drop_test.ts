@@ -1,8 +1,12 @@
-import { assert } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import {
+  assert,
+  assertRejects,
+} from "https://deno.land/std@0.207.0/assert/mod.ts";
 import * as fc from "npm:fast-check@3.14.0";
-import { fromIterable } from "../src/collections.ts";
-import { drop, dropWhile } from "../src/drop.ts";
+import { fromIterable, toArray } from "../src/collections.ts";
+import { drop, dropEnd, dropWhile } from "../src/drop.ts";
 import { count } from "../src/infinite.ts";
+import { range } from "../src/range.ts";
 import { take } from "../src/take.ts";
 import { assertStreams, assertStreamStartsWith } from "../src/testing.ts";
 
@@ -88,4 +92,63 @@ Deno.test("dropWhile() [fc]", async () => {
       ),
     );
   }
+});
+
+Deno.test("dropEnd()", async () => {
+  await assertStreams(dropEnd(range(5), 0), [0, 1, 2, 3, 4]);
+  await assertStreams(dropEnd(range(5), 1), [0, 1, 2, 3]);
+  await assertStreams(dropEnd(range(5), 2), [0, 1, 2]);
+});
+
+Deno.test("dropEnd() [fc]", async () => {
+  await fc.assert(
+    fc.asyncProperty(
+      fc.oneof(fc.array(fc.integer()), fc.array(fc.string())),
+      fc.integer(),
+      async (source: unknown[], count: number) => {
+        await assertStreams(
+          dropEnd(source, count),
+          count > 0 ? source.slice(0, -count) : source,
+        );
+        await assertStreams(
+          dropEnd(fromIterable(source), count),
+          count > 0 ? source.slice(0, -count) : source,
+        );
+      },
+    ),
+  );
+
+  await fc.assert(
+    fc.asyncProperty(
+      fc.oneof(fc.array(fc.integer()), fc.array(fc.string())),
+      fc.constantFrom(Infinity, -Infinity, NaN),
+      async (source: unknown[], count: number) => {
+        await assertRejects(
+          () => toArray(dropEnd(source, count)),
+          RangeError,
+        );
+        await assertRejects(
+          () => toArray(dropEnd(fromIterable(source), count)),
+          RangeError,
+        );
+      },
+    ),
+  );
+
+  await fc.assert(
+    fc.asyncProperty(
+      fc.oneof(fc.array(fc.integer()), fc.array(fc.string())),
+      fc.double().filter((n) => !Number.isInteger(n)),
+      async (source: unknown[], count: number) => {
+        await assertRejects(
+          () => toArray(dropEnd(source, count)),
+          RangeError,
+        );
+        await assertRejects(
+          () => toArray(dropEnd(fromIterable(source), count)),
+          RangeError,
+        );
+      },
+    ),
+  );
 });

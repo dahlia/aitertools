@@ -135,3 +135,70 @@ export async function* dropWhile<T>(
     yield value;
   }
 }
+
+/**
+ * Drops a specified number of elements from the end of an async iterable, and
+ * yields the remaining elements.
+ *
+ * ``` typescript
+ * import { dropEnd } from "./drop.ts";
+ *
+ * async function* gen() { yield "foo"; yield "bar"; yield "baz"; yield "qux" }
+ * const iterable = dropEnd(gen(), 2);
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print the following 2 lines:
+ *
+ * ~~~
+ * foo
+ * bar
+ * ~~~
+ *
+ * If the iterable is shorter than or equal to the specified number, no elements
+ * are yielded.
+ *
+ * ``` typescript
+ * import { dropEnd } from "./drop.ts";
+ *
+ * async function* gen() { yield "foo"; yield "bar"; yield "baz"; yield "qux" }
+ * const iterable = dropEnd(gen(), 4);
+ * for await (const value of iterable) console.log(value);
+ * ```
+ *
+ * The above example will print nothing.
+ *
+ * @template T The type of the elements in the `source` and the returned async
+ *             iterable.
+ * @param source The async iterable to drop elements from.  It can be either
+ *               finite or infinite.
+ * @param count The number of elements to drop.  Must be a finite integer.
+ * @returns An async iterable that yields the remaining elements after dropping
+ *          the last `count` elements from the `source` iterable.
+ * @throws `RangeError` if `count` is not a finite integer.
+ */
+export async function* dropEnd<T>(
+  source: Iterable<T> | AsyncIterable<T>,
+  count: number,
+): AsyncIterableIterator<T> {
+  if (!Number.isFinite(count)) throw new RangeError("count must be finite");
+  else if (!Number.isInteger(count)) {
+    throw new RangeError("count must be integer");
+  } else if (count < 1) {
+    for await (const value of source) yield value;
+    return;
+  }
+
+  const buffer: T[] = [];
+  let rewindPos = 0;
+  for await (const value of source) {
+    if (buffer.length >= count) {
+      yield buffer[rewindPos];
+      buffer[rewindPos] = value;
+      if (rewindPos < count - 1) rewindPos++;
+      else rewindPos = 0;
+    } else {
+      buffer.push(value);
+    }
+  }
+}

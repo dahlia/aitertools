@@ -1,6 +1,6 @@
 export { fromIterable, toArray, toMap, toSet } from "./collections.ts";
 export { concat } from "./concat.ts";
-export { drop, dropWhile } from "./drop.ts";
+export { drop, dropEnd, dropWhile } from "./drop.ts";
 export { filter } from "./filter.ts";
 export { reduce } from "./fold.ts";
 export { count, cycle, repeat } from "./infinite.ts";

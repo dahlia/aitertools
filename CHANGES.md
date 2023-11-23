@@ -16,6 +16,7 @@ To be released.  Unreleased versions are available on [nest.land].
  -  Added `range()` function.
  -  Added `Range` class.
  -  Added `takeEnd()` function.
+ -  Added `dropEnd()` function.
 
 [available on npm]: https://www.npmjs.com/package/aitertools
 

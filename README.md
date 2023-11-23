@@ -44,6 +44,8 @@ For the complete list of functions, see the [complete API reference][Deno Doc].
     `predicate` returns `true`.
  -  `dropWhile(source, predicate)`: Drop items from the `source` while the
     `predicate` returns `true`.
+ -  `takeEnd(source, count)`: Take the last `count` items from the `source`.
+ -  `dropEnd(source, count)`: Drop the last `count` items from the `source`.
  -  `map(mapper, ...sources)`: Apply the `mapper` to each item in the `sources`.
  -  `filter(predicate, ...sources)`: Filter items in the `sources` by the
     `predicate`.
