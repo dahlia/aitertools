@@ -1,17 +1,73 @@
 /**
  * Creates a {@link Range} of numbers from 0 to `stop` with step 1.
+ *
+ * ``` typescript
+ * import { range } from "./range.ts";
+ *
+ * for (const value of range(4)) console.log(value);
+ * ```
+ *
+ * The above example will print the following 4 lines:
+ *
+ * ~~~
+ * 0
+ * 1
+ * 2
+ * 3
+ * ~~~
+ *
+ * Note that the type of the range is `Range<number>`, which implements
+ * both `Iterable<number>` and `AsyncIterable<number>`.
+ *
  * @param stop The stop of the range.
  */
 export function range(stop: number): Range<number>;
 
 /**
  * Creates a {@link Range} of bigints from 0 to `stop` with step 1.
+ *
+ * ``` typescript
+ * import { range } from "./range.ts";
+ *
+ * for (const value of range(4n)) console.log(value);
+ * ```
+ *
+ * The above example will print the following 4 lines:
+ *
+ * ~~~
+ * 0
+ * 1
+ * 2
+ * 3
+ * ~~~
+ *
+ * Note that the type of the range is `Range<bigint>`, which implements
+ * both `Iterable<bigint>` and `AsyncIterable<bigint>`.
+ *
  * @param stop The stop of the range.
  */
 export function range(stop: bigint): Range<bigint>;
 
 /**
  * Creates a {@link Range} of numbers with step 1.
+ *
+ * ``` typescript
+ * import { range } from "./range.ts";
+ *
+ * for (const value of range(2, 5)) console.log(value);
+ * ```
+ *
+ * The above example will print the following 3 lines:
+ *
+ * ~~~
+ * 2
+ * 3
+ * 4
+ * ~~~
+ *
+ * Note that the type of the range is `Range<number>`, which implements
+ * both `Iterable<number>` and `AsyncIterable<number>`.
+ *
  * @param start The start of the range.
  * @param stop The stop of the range.
  */
@@ -19,6 +75,24 @@ export function range(start: number, stop: number): Range<number>;
 
 /**
  * Creates a {@link Range} of bigints with step 1.
+ *
+ * ``` typescript
+ * import { range } from "./range.ts";
+ *
+ * for (const value of range(2n, 5n)) console.log(value);
+ * ```
+ *
+ * The above example will print the following 3 lines:
+ *
+ * ~~~
+ * 2
+ * 3
+ * 4
+ * ~~~
+ *
+ * Note that the type of the range is `Range<bigint>`, which implements
+ * both `Iterable<bigint>` and `AsyncIterable<bigint>`.
+ *
  * @param start The start of the range.
  * @param stop The stop of the range.
  */
@@ -26,6 +100,27 @@ export function range(start: bigint, stop: bigint): Range<bigint>;
 
 /**
  * Creates a {@link Range} of numbers.
+ *
+ * ``` typescript
+ * import { range } from "./range.ts";
+ *
+ * for (const value of range(10, -10, -3.5)) console.log(value);
+ * ```
+ *
+ * The above example will print the following 6 lines:
+ *
+ * ~~~
+ * 10
+ * 6.5
+ * 3
+ * -0.5
+ * -4
+ * -7.5
+ * ~~~
+ *
+ * Note that the type of the range is `Range<number>`, which implements
+ * both `Iterable<number>` and `AsyncIterable<number>`.
+ *
  * @param start The start of the range.  It must be a finite number.
  * @param stop The stop of the range.  It must be a finite number.
  * @param step The step of the range.  It must be a finite number,
@@ -35,6 +130,25 @@ export function range(start: number, stop: number, step: number): Range<number>;
 
 /**
  * Creates a {@link Range} of bigints.
+ *
+ * ``` typescript
+ * import { range } from "./range.ts";
+ *
+ * for (const value of range(10n, -10n, -5n)) console.log(value);
+ * ```
+ *
+ * The above example will print the following 4 lines:
+ *
+ * ~~~
+ * 10
+ * 5
+ * 0
+ * -5
+ * ~~~
+ *
+ * Note that the type of the range is `Range<bigint>`, which implements
+ * both `Iterable<bigint>` and `AsyncIterable<bigint>`.
+ *
  * @param start The start of the range.
  * @param stop The stop of the range.
  * @param step The step of the range.  Cannot be zero.
@@ -117,6 +231,15 @@ export class Range<T extends number | bigint>
   /**
    * The length of the range.  Note that it guarantees to return the same value
    * as `Array.from(range).length`.
+   *
+   * ``` typescript
+   * import { range } from "./range.ts";
+   *
+   * console.log(range(10, -10, -3.5).length);
+   * ```
+   *
+   * The above example will print `6`.
+   *
    * @returns The number of elements in the range.
    */
   get length(): number {
@@ -131,6 +254,22 @@ export class Range<T extends number | bigint>
 
   /**
    * Iterates over the elements of the range.
+   *
+   * ``` typescript
+   * import { range } from "./range.ts";
+   *
+   * for (const value of range(4n)) console.log(value);
+   * ```
+   *
+   * The above example will print the following 4 lines:
+   *
+   * ~~~
+   * 0
+   * 1
+   * 2
+   * 3
+   * ~~~
+   *
    * @return An iterator that iterates over the elements of the range.
    */
   *[Symbol.iterator](): Iterator<T> {
@@ -147,6 +286,22 @@ export class Range<T extends number | bigint>
 
   /**
    * Iterates over the elements of the range, in an asynchronous manner.
+   *
+   * ``` typescript
+   * import { range } from "./range.ts";
+   *
+   * for await (const value of range(4)) console.log(value);
+   * ```
+   *
+   * The above example will print the following 4 lines:
+   *
+   * ~~~
+   * 0
+   * 1
+   * 2
+   * 3
+   * ~~~
+   *
    * @return An async iterator that iterates over the elements of the range.
    */
   async *[Symbol.asyncIterator](): AsyncIterator<T> {
@@ -156,6 +311,21 @@ export class Range<T extends number | bigint>
   /**
    * Returns the element at the specified index in the range.  Note that it
    * guarantees to return the same value as `Array.from(range).at(index)`.
+   *
+   * ``` typescript
+   * import { range } from "./range.ts";
+   *
+   * const r = range(10, -10, -3.5);
+   * console.log(r.at(3), r.at(-1));
+   * ```
+   *
+   * The above example will print the following 2 lines:
+   *
+   * ~~~
+   * -0.5
+   * -7.5
+   * ~~~
+   *
    * @param index The index of the element to return.  If it is negative, it
    *              counts from the end of the range.
    * @returns The element at the specified index in the range.  If the index is
