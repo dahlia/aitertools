@@ -51,7 +51,7 @@ For the complete list of functions, see the [complete API reference][Deno Doc].
     `predicate`.
  -  `reduce(reducer, source, initial?)`: Reduce the `source` to a single value
     by the `reducer`, optionally with the `initial` value.
- -  `tee(source, numbeer)`: Effectively duplicate the `source` into `number`
+ -  `tee(source, number)`: Effectively duplicate the `source` into `number`
     of async iterables.
  -  `groupBy(source, keySelector)`: Group items in the `source` by the
     `keySelector`.
