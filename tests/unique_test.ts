@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import { assertEquals } from "@std/assert";
 import { tee } from "../src/tee.ts";
 import { assertStreams } from "../src/testing.ts";
 import { groupBy, unique } from "../src/unique.ts";

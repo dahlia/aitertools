@@ -1,4 +1,4 @@
-import { build, emptyDir } from "https://deno.land/x/dnt@0.39.0/mod.ts";
+import { build, emptyDir } from "@deno/dnt";
 
 await emptyDir("./npm");
 
@@ -38,6 +38,7 @@ await build({
   shims: {
     deno: true,
   },
+  importMap: "deno.json",
   typeCheck: "both",
   test: true,
   declaration: "separate",

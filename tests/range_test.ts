@@ -4,10 +4,10 @@ import {
   assertMatch,
   assertNotEquals,
   assertThrows,
-} from "https://deno.land/std@0.207.0/assert/mod.ts";
-import * as fc from "npm:fast-check@3.14.0";
-import { assertStreams } from "../src/testing.ts";
+} from "@std/assert";
+import * as fc from "fast-check";
 import { Range, range } from "../src/range.ts";
+import { assertStreams } from "../src/testing.ts";
 
 function validNumber(): fc.Arbitrary<number> {
   return fc.oneof(

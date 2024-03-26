@@ -1,4 +1,4 @@
-import * as fc from "npm:fast-check@3.14.0";
+import * as fc from "fast-check";
 import { fromIterable } from "../src/collections.ts";
 import { concat } from "../src/concat.ts";
 import { assertStreams } from "../src/testing.ts";

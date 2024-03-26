@@ -46,10 +46,14 @@ jobs:
           deno-version: v1.x
       - run: deno lint
       - run: deno fmt --check --ignore=.vscode/
+      - run: deno publish --dry-run
 
   release:
     if: github.event_name == 'push'
     needs: [test, lint]
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
@@ -58,6 +62,22 @@ jobs:
           deno-version: v1.x
       - id: determine-version
         run: deno run -A scripts/determine-version.ts
+      - if: github.ref_type == 'tag'
+        run: |
+          set -ex
+          [[ "$(jq -r .version deno.json)" = "$VERSION" ]]
+        env:
+          VERSION: ${{ steps.determine-version.outputs.version }}
+      - if: github.ref_type == 'branch'
+        run: |
+          set -ex
+          jq \
+            --arg version "$VERSION" \
+            '.version = $version' \
+            deno.json > deno.json.tmp
+          mv deno.json.tmp deno.json
+        env:
+          VERSION: ${{ steps.determine-version.outputs.version }}
       - if: github.ref_type == 'tag'
         run: '[[ "$VERSION" = "$GITHUB_REF_NAME" ]]'
         env:
@@ -70,39 +90,7 @@ jobs:
           popd
         env:
           VERSION: ${{ steps.determine-version.outputs.version }}
-      - run: deno install -Af --unstable https://x.nest.land/eggs@0.3.10/eggs.ts
-      - run: "eggs link '${{ secrets.NEST_API_KEY }}'"
-      - if: github.ref_type == 'tag'
-        uses: mikefarah/yq@master
-        with:
-          cmd: >-
-            yq -i
-            ' strenv(GITHUB_REF_NAME) as $version
-            | .version = $version
-            | .unstable = false'
-            egg.yaml
-      - if: github.ref_type != 'tag'
-        uses: mikefarah/yq@master
-        with:
-          cmd: >-
-            yq -i
-            ' strenv(VERSION) as $version
-            | .version = $version
-            | .unstable = true'
-            egg.yaml
-        env:
-          VERSION: ${{ steps.determine-version.outputs.version }}
-      - run: |
-          # Try up to 3 times as `eggs publish` frequently fails due to unknown
-          # reason (I guess it's a bug on the server side):
-          for _ in 1 2 3; do
-            eggs publish --debug --yes --no-check || continue
-          done
-      - if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: eggs-debug.log
-          path: ${{ github.workspace }}/eggs-debug.log
+      - run: deno publish --allow-dirty
       - run: |
           set -e
           cd npm/

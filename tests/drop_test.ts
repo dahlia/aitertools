@@ -1,8 +1,5 @@
-import {
-  assert,
-  assertRejects,
-} from "https://deno.land/std@0.207.0/assert/mod.ts";
-import * as fc from "npm:fast-check@3.14.0";
+import { assert, assertRejects } from "@std/assert";
+import * as fc from "fast-check";
 import { fromIterable, toArray } from "../src/collections.ts";
 import { drop, dropEnd, dropWhile } from "../src/drop.ts";
 import { count } from "../src/infinite.ts";

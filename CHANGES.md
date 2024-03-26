@@ -6,7 +6,14 @@ Changelog
 Version 0.6.0
 -------------
 
-To be released.  Unreleased versions are available on [nest.land].
+To be released.
+
+ -  Now aitertools is [available on JSR].
+ -  Now aitertools is no more available on [deno.land/x] and [nest.land].
+
+[available on JSR]: https://jsr.io/@hongminhee/aitertools
+[deno.land/x]: https://deno.land/x/aitertools
+[nest.land]: https://nest.land/package/aitertools
 
 
 Version 0.5.0
@@ -109,6 +116,3 @@ Version 0.1.0
 -------------
 
 Initial release.  Released on May 23, 2022.
-
-
-[nest.land]: https://nest.land/package/aitertools

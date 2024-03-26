@@ -1,0 +1,25 @@
+{
+  "name": "@hongminhee/aitertools",
+  "version": "0.6.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./collections": "./src/collections.ts",
+    "./concat": "./src/concat.ts",
+    "./drop": "./src/drop.ts",
+    "./filter": "./src/filter.ts",
+    "./fold": "./src/fold.ts",
+    "./infinite": "./src/infinite.ts",
+    "./map": "./src/map.ts",
+    "./range": "./src/range.ts",
+    "./take": "./src/take.ts",
+    "./tee": "./src/tee.ts",
+    "./testing": "./src/testing.ts",
+    "./unique": "./src/unique.ts"
+  },
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.0",
+    "@std/assert": "jsr:@std/assert@^0.220.1",
+    "fast-check": "npm:fast-check@3.14.0"
+  },
+  "lock": false
+}

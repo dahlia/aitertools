@@ -1,8 +1,4 @@
-import {
-  dirname,
-  fromFileUrl,
-  join,
-} from "https://deno.land/std@0.207.0/path/mod.ts";
+import { dirname, fromFileUrl, join } from "jsr:@std/path@^0.220.1";
 import * as commonmark from "npm:commonmark";
 
 const projectDir = dirname(dirname(fromFileUrl(import.meta.url)));
