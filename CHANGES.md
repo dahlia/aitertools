@@ -6,7 +6,7 @@ Changelog
 Version 0.6.0
 -------------
 
-To be released.
+Released on March 26, 2024.
 
  -  Now aitertools is [available on JSR].
  -  Now aitertools is no more available on [deno.land/x] and [nest.land].
